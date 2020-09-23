@@ -36,4 +36,9 @@ dependencies {
     implementation "com.google.dagger:dagger:$daggerImpl"
     kapt "com.google.dagger:dagger-compiler:$daggerKapt"
 
+    //RoboSwag
+    gradle.ext.roboswag.forEach { module ->
+        implementation project(":$module")
+    }
+
 }

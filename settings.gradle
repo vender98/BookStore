@@ -1,2 +1,15 @@
 rootProject.name='BookStore'
+
+gradle.ext.roboswag = [
+        'utils',
+        'logging',
+        'lifecycle',
+        'lifecycle-rx'
+]
+
+gradle.ext.roboswag.forEach { module ->
+    include ":$module"
+    project(":$module").projectDir = file("RoboSwag/$module")
+}
+
 include ':app'
