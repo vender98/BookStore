@@ -32,15 +32,24 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
     //AndroidX
-    implementation "androidx.appcompat:appcompat:$androidxAppCompat"
-    implementation "androidx.core:core-ktx:$androidxCoreKtx"
-    implementation "androidx.constraintlayout:constraintlayout:$androidxConstraintLayout"
-    implementation "androidx.fragment:fragment-ktx:$androidxFragmentKtx"
-    implementation "androidx.swiperefreshlayout:swiperefreshlayout:$androidxSwipeRefreshLayout"
+    implementation "androidx.appcompat:appcompat:$versions.androidxAppCompat"
+    implementation "androidx.core:core-ktx:$versions.androidxCoreKtx"
+    implementation "androidx.constraintlayout:constraintlayout:$versions.androidxConstraintLayout"
+    implementation "androidx.fragment:fragment-ktx:$versions.androidxFragmentKtx"
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:$versions.androidxSwipeRefreshLayout"
 
     //Dagger2
-    implementation "com.google.dagger:dagger:$daggerImpl"
-    kapt "com.google.dagger:dagger-compiler:$daggerKapt"
+    implementation "com.google.dagger:dagger:$versions.daggerImpl"
+    kapt "com.google.dagger:dagger-compiler:$versions.daggerKapt"
+
+    // RxJava
+    implementation "io.reactivex.rxjava2:rxjava:$versions.rxjava"
+    implementation "io.reactivex.rxjava2:rxandroid:$versions.rxAndroid"
+
+    // Retrofit
+    implementation "com.squareup.retrofit2:retrofit:$versions.retrofit"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$versions.retrofit"
+    implementation "com.squareup.retrofit2:converter-gson:$versions.retrofit"
 
     //RoboSwag
     gradle.ext.roboswag.forEach { module ->

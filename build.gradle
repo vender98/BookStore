@@ -26,17 +26,24 @@ task clean(type: Delete) {
 
 ext {
 
-    //App dependencies versions
+    versions = [
+            //AndroidX
+            androidxAppCompat : '1.2.0',
+            androidxCoreKtx : '1.3.1',
+            androidxConstraintLayout : '2.0.1',
+            androidxFragmentKtx : '1.2.5',
+            androidxSwipeRefreshLayout : '1.1.0',
 
-    //AndroidX
-    androidxAppCompat = '1.2.0'
-    androidxCoreKtx = '1.3.1'
-    androidxConstraintLayout = '2.0.1'
-    androidxFragmentKtx = '1.2.5'
-    androidxSwipeRefreshLayout = '1.1.0'
+            //Dagger2
+            daggerImpl : '2.27',
+            daggerKapt : '2.26',
 
-    //Dagger2
-    daggerImpl = '2.27'
-    daggerKapt = '2.26'
+            //RxJava
+            rxJava : '2.2.19',
+            rxAndroid : '2.1.1',
+
+            //Retrofit
+            retrofit : '2.7.2',
+    ]
 
 }
