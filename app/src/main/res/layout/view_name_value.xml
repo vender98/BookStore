@@ -42,4 +42,13 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:text="It is a very long name field. So long that it does not fit one line ..." />
 
+    <View
+        android:id="@+id/view_name_value_divider"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginStart="@dimen/margin_default"
+        android:layout_marginEnd="@dimen/margin_default"
+        android:background="@color/colorPrimary"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
 </merge>
