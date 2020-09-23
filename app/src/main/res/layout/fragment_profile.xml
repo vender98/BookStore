@@ -20,18 +20,18 @@
                 android:layout_height="0dp"
                 android:visibility="gone"
                 app:constraint_referenced_ids="
-                    fragment_profile_name,
-                    fragment_profile_surname,
-                    fragment_profile_dob,
+                    fragment_profile_first_name,
+                    fragment_profile_last_name,
+                    fragment_profile_birth_date,
                     fragment_profile_city,
-                    fragment_profile_sex,
+                    fragment_profile_gender,
                     fragment_profile_email,
-                    fragment_profile_phone,
+                    fragment_profile_phone_number,
                     fragment_profile_books"
                 tools:visibility="visible" />
 
             <com.vender98.bookstore.views.NameValueView
-                android:id="@+id/fragment_profile_name"
+                android:id="@+id/fragment_profile_first_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/margin_default"
@@ -42,24 +42,24 @@
                 tools:value="Александр" />
 
             <com.vender98.bookstore.views.NameValueView
-                android:id="@+id/fragment_profile_surname"
+                android:id="@+id/fragment_profile_last_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/margin_default"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/fragment_profile_name"
+                app:layout_constraintTop_toBottomOf="@+id/fragment_profile_first_name"
                 app:name="Фамилия"
                 tools:value="Александров" />
 
             <com.vender98.bookstore.views.NameValueView
-                android:id="@+id/fragment_profile_dob"
+                android:id="@+id/fragment_profile_birth_date"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/margin_default"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/fragment_profile_surname"
+                app:layout_constraintTop_toBottomOf="@+id/fragment_profile_last_name"
                 app:name="Дата рождения"
                 tools:value="1 января 2020г." />
 
@@ -70,12 +70,12 @@
                 android:layout_margin="@dimen/margin_default"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/fragment_profile_dob"
+                app:layout_constraintTop_toBottomOf="@+id/fragment_profile_birth_date"
                 app:name="Город проживания"
                 tools:value="Санкт-Петербург" />
 
             <com.vender98.bookstore.views.NameValueView
-                android:id="@+id/fragment_profile_sex"
+                android:id="@+id/fragment_profile_gender"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/margin_default"
@@ -92,12 +92,12 @@
                 android:layout_margin="@dimen/margin_default"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/fragment_profile_sex"
+                app:layout_constraintTop_toBottomOf="@+id/fragment_profile_gender"
                 app:name="e-mail"
                 tools:value="someaddress@domen.com" />
 
             <com.vender98.bookstore.views.NameValueView
-                android:id="@+id/fragment_profile_phone"
+                android:id="@+id/fragment_profile_phone_number"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/margin_default"
@@ -115,7 +115,7 @@
                 android:background="?selectableItemBackground"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/fragment_profile_phone"
+                app:layout_constraintTop_toBottomOf="@+id/fragment_profile_phone_number"
                 app:name="Количество прочитанных книнг"
                 tools:value="777" />
 
