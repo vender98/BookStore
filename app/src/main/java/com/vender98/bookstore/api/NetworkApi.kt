@@ -6,7 +6,7 @@ import com.vender98.bookstore.dto.profile.Profile
 import io.reactivex.Single
 import retrofit2.http.GET
 
-interface ProfileApi {
+interface NetworkApi {
 
     @GET("${BuildConfig.API_TOKEN}%2Fprofile.json?alt=media")
     fun getProfile(): Single<Response<Profile>>

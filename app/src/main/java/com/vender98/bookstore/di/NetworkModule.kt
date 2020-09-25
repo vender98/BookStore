@@ -5,7 +5,7 @@ import com.google.gson.FieldNamingPolicy
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.vender98.bookstore.BuildConfig
-import com.vender98.bookstore.api.ProfileApi
+import com.vender98.bookstore.api.NetworkApi
 import dagger.Module
 import dagger.Provides
 import io.reactivex.schedulers.Schedulers
@@ -38,6 +38,6 @@ class NetworkModule {
 
     @Singleton
     @Provides
-    fun provideProfileApi(retrofit: Retrofit): ProfileApi = retrofit.create(ProfileApi::class.java)
+    fun provideNetworkApi(retrofit: Retrofit): NetworkApi = retrofit.create(NetworkApi::class.java)
 
 }
