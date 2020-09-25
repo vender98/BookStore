@@ -54,6 +54,9 @@ dependencies {
     implementation "com.squareup.retrofit2:adapter-rxjava2:$versions.retrofit"
     implementation "com.squareup.retrofit2:converter-gson:$versions.retrofit"
 
+    //GsonJavaTimeSerializers
+    implementation "com.fatboyindustrial.gson-javatime-serialisers:gson-javatime-serialisers:$versions.gsonJavaTimeSerializers"
+
     //RoboSwag
     gradle.ext.roboswag.forEach { module ->
         implementation project(":$module")

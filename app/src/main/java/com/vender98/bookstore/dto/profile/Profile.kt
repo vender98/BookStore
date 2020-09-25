@@ -1,10 +1,11 @@
 package com.vender98.bookstore.dto.profile
 
 import com.google.gson.annotations.Expose
+import java.time.LocalDate
 
 data class Profile(
     @Expose
-    val birthDate: String,
+    val birthDate: LocalDate,
     @Expose
     val city: String?,
     @Expose

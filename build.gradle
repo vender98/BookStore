@@ -44,6 +44,9 @@ ext {
 
             //Retrofit
             retrofit : '2.7.2',
+
+            //GsonJavaTimeSerializers
+            gsonJavaTimeSerializers : '1.1.1',
     ]
 
 }

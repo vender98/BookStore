@@ -1,5 +1,6 @@
 package com.vender98.bookstore.di
 
+import com.fatboyindustrial.gsonjavatime.Converters
 import com.google.gson.FieldNamingPolicy
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
@@ -32,6 +33,7 @@ class NetworkModule {
     fun provideGson(): Gson = GsonBuilder()
         .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
         .excludeFieldsWithoutExposeAnnotation()
+        .let(Converters::registerLocalDate)
         .create()
 
     @Singleton
