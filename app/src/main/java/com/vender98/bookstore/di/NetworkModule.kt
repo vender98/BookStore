@@ -5,7 +5,7 @@ import com.google.gson.FieldNamingPolicy
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.vender98.bookstore.BuildConfig
-import com.vender98.bookstore.api.NetworkApi
+import com.vender98.bookstore.data.api.NetworkApi
 import dagger.Module
 import dagger.Provides
 import io.reactivex.schedulers.Schedulers

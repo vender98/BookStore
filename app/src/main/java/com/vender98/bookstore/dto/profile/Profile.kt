@@ -5,7 +5,7 @@ import java.time.LocalDate
 
 data class Profile(
     @Expose
-    val birthDate: LocalDate,
+    val birthDate: LocalDate?,
     @Expose
     val city: String?,
     @Expose
