@@ -11,12 +11,17 @@ import io.reactivex.functions.BiFunction
 import ru.touchin.lifecycle.event.ContentEvent
 import ru.touchin.lifecycle.livedata.SingleLiveEvent
 import ru.touchin.lifecycle.viewmodel.RxViewModel
+import java.time.format.DateTimeFormatter
 import javax.inject.Inject
 
 class ProfileViewModel @Inject constructor(
     private val getProfileUseCase: GetProfileUseCase,
     private val getBooksUseCase: GetBooksUseCase
 ) : RxViewModel() {
+
+    companion object {
+        private const val DATE_PATTERN = "dd MMMM yyyy"
+    }
 
     private val _profileData = MutableLiveData<ContentEvent<ProfileData>>()
     val profileData: LiveData<ContentEvent<ProfileData>> = _profileData
@@ -52,7 +57,7 @@ class ProfileViewModel @Inject constructor(
     private fun getProfileData(profile: Profile, books: List<Book>): ProfileData = ProfileData(
         firstName = profile.firstName,
         lastName = profile.lastName,
-        birthDate = profile.birthDate,
+        birthDate = profile.birthDate?.format(DateTimeFormatter.ofPattern(DATE_PATTERN)),
         city = profile.city,
         gender = profile.gender,
         email = profile.email,

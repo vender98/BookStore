@@ -79,7 +79,9 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
                 val profileData = event.data
                 firstNameView.setValueOrMakeGone(profileData.firstName)
                 lastNameView.setValueOrMakeGone(profileData.lastName)
-                birthDateView.setValueOrMakeGone(profileData.birthDate?.toString())
+                birthDateView.setValueOrMakeGone(profileData.birthDate?.let { birthDate ->
+                    String.format(getString(R.string.date_template), birthDate)
+                })
                 cityView.setValueOrMakeGone(profileData.city)
                 genderView.setValueOrMakeGone(profileData.gender)
                 emailView.setValueOrMakeGone(profileData.email)
