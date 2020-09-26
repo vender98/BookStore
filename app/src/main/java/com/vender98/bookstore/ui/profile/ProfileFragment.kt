@@ -15,6 +15,7 @@ import com.vender98.bookstore.BookStoreApplication
 import com.vender98.bookstore.R
 import com.vender98.bookstore.ui.books.BooksFragment
 import com.vender98.bookstore.views.NameValueView
+import ru.touchin.extensions.setOnRippleClickListener
 import ru.touchin.lifecycle.event.ContentEvent
 import javax.inject.Inject
 
@@ -68,7 +69,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
     private fun configureViews() {
         swipeRefreshLayout.setOnRefreshListener { viewModel.fetchData() }
-        booksView.setOnClickListener { viewModel.navigateToBooksScreen() }
+        booksView.setOnRippleClickListener { viewModel.navigateToBooksScreen() }
     }
 
     private fun observeViewModel() {
