@@ -5,7 +5,7 @@ import android.util.AttributeSet
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.withStyledAttributes
-import androidx.core.view.isGone
+import androidx.core.view.isVisible
 import com.vender98.bookstore.R
 
 class NameValueView @JvmOverloads constructor(
@@ -34,11 +34,8 @@ class NameValueView @JvmOverloads constructor(
     }
 
     fun setValueOrMakeGone(value: String?) {
-        if (value != null) {
-            valueTextView.text = value
-        } else {
-            isGone = true
-        }
+        valueTextView.text = value
+        isVisible = value != null
     }
 
 }

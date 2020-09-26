@@ -9,13 +9,13 @@ android {
 
     defaultConfig {
         applicationId "com.vender98.bookstore"
-        minSdkVersion 21
+        minSdkVersion 26
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
 
         buildConfigField "String", "API_ENDPOINT", '"https://firebasestorage.googleapis.com/v0/b/test-f4f35.appspot.com/o/"'
-        buildConfigField "String", "API_TOKEN", '"ziPZ63IYeuRiHz2ytNlzDw0h98Ve6A7I"'
+        buildConfigField "String", "API_TOKEN", "\"ziPZ63IYeuRiHz2ytNlzDw0h98Ve6A7I\""
     }
 
     compileOptions {
@@ -56,6 +56,11 @@ dependencies {
 
     //GsonJavaTimeSerializers
     implementation "com.fatboyindustrial.gson-javatime-serialisers:gson-javatime-serialisers:$versions.gsonJavaTimeSerializers"
+
+    //Room
+    implementation "androidx.room:room-runtime:$versions.room"
+    implementation "androidx.room:room-rxjava2:$versions.room"
+    kapt "androidx.room:room-compiler:$versions.room"
 
     //RoboSwag
     gradle.ext.roboswag.forEach { module ->

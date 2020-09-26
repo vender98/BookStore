@@ -47,6 +47,9 @@ ext {
 
             //GsonJavaTimeSerializers
             gsonJavaTimeSerializers : '1.1.1',
+
+            //Room
+            room : '2.2.5'
     ]
 
 }

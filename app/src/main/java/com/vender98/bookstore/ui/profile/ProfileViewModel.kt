@@ -21,12 +21,12 @@ class ProfileViewModel @Inject constructor(
     val viewState: LiveData<ContentEvent<ProfileData>> = _viewState
 
     init {
-        fetchData()
+        fetchData(forceRefresh = false)
     }
 
-    fun fetchData() {
+    fun fetchData(forceRefresh: Boolean = true) {
         Single.zip(
-            getProfileUseCase.invoke(),
+            getProfileUseCase.invoke(forceRefresh),
             getBooksUseCase.invoke(),
             BiFunction(this::getProfileData)
         )

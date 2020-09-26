@@ -66,7 +66,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     }
 
     private fun configureViews() {
-        swipeRefreshLayout.setOnRefreshListener(viewModel::fetchData)
+        swipeRefreshLayout.setOnRefreshListener { viewModel.fetchData() }
         booksView.setOnClickListener {
             // TODO: implement this
         }
@@ -93,9 +93,6 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
                 is ContentEvent.Error -> {
                     val throwable = event.throwable
                     Toast.makeText(requireContext(), throwable.message, Toast.LENGTH_SHORT).show()
-
-                    contentView.isGone = true
-                    noDataView.isVisible = true
                 }
             }
         })

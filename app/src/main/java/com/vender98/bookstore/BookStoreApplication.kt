@@ -6,6 +6,8 @@ import com.vender98.bookstore.di.DaggerApplicationComponent
 
 class BookStoreApplication : Application() {
 
-    val appComponent: ApplicationComponent = DaggerApplicationComponent.create()
+    val appComponent: ApplicationComponent by lazy {
+        DaggerApplicationComponent.factory().create(applicationContext)
+    }
 
 }
