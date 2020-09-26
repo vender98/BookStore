@@ -9,6 +9,7 @@ import com.vender98.bookstore.dto.profile.Profile
 import io.reactivex.Single
 import io.reactivex.functions.BiFunction
 import ru.touchin.lifecycle.event.ContentEvent
+import ru.touchin.lifecycle.livedata.SingleLiveEvent
 import ru.touchin.lifecycle.viewmodel.RxViewModel
 import javax.inject.Inject
 
@@ -17,20 +18,35 @@ class ProfileViewModel @Inject constructor(
     private val getBooksUseCase: GetBooksUseCase
 ) : RxViewModel() {
 
-    private val _viewState = MutableLiveData<ContentEvent<ProfileData>>()
-    val viewState: LiveData<ContentEvent<ProfileData>> = _viewState
+    private val _profileData = MutableLiveData<ContentEvent<ProfileData>>()
+    val profileData: LiveData<ContentEvent<ProfileData>> = _profileData
+
+    private val _error = SingleLiveEvent<Throwable>()
+    val error: LiveData<Throwable> = _error
 
     init {
         fetchData(forceRefresh = false)
     }
 
     fun fetchData(forceRefresh: Boolean = true) {
+        val oldData = _profileData.value?.data
+        _profileData.value = ContentEvent.Loading()
         Single.zip(
             getProfileUseCase.invoke(forceRefresh),
             getBooksUseCase.invoke(forceRefresh),
             BiFunction(this::getProfileData)
         )
-            .dispatchTo(_viewState)
+            .untilDestroy(
+                    onSuccess = { _profileData.value = ContentEvent.Success(it) },
+                    onError = { throwable ->
+                        _error.setValue(throwable)
+                        _profileData.value = if (oldData != null) {
+                            ContentEvent.Success(oldData)
+                        } else {
+                            ContentEvent.Error(throwable)
+                        }
+                    }
+            )
     }
 
     private fun getProfileData(profile: Profile, books: List<Book>): ProfileData = ProfileData(

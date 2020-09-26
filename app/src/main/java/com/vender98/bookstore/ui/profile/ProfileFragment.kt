@@ -26,7 +26,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
     private val viewModel by viewModels<ProfileViewModel> { viewModelFactory }
-    
+
     lateinit var swipeRefreshLayout: SwipeRefreshLayout
     lateinit var contentView: View
     lateinit var noDataView: View
@@ -73,29 +73,27 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     }
 
     private fun observeViewModel() {
-        viewModel.viewState.observe(viewLifecycleOwner, Observer { event ->
+        viewModel.profileData.observe(viewLifecycleOwner, Observer { event ->
             swipeRefreshLayout.isRefreshing = event is ContentEvent.Loading
-            when (event) {
-                is ContentEvent.Success -> {
-                    val profileData = event.data
-                    firstNameView.setValueOrMakeGone(profileData.firstName)
-                    lastNameView.setValueOrMakeGone(profileData.lastName)
-                    birthDateView.setValueOrMakeGone(profileData.birthDate?.toString())
-                    cityView.setValueOrMakeGone(profileData.city)
-                    genderView.setValueOrMakeGone(profileData.gender)
-                    emailView.setValueOrMakeGone(profileData.email)
-                    phoneNumberView.setValueOrMakeGone(profileData.phoneNumber)
-                    booksView.setValueOrMakeGone(profileData.booksCount)
+            if (event is ContentEvent.Success) {
+                val profileData = event.data
+                firstNameView.setValueOrMakeGone(profileData.firstName)
+                lastNameView.setValueOrMakeGone(profileData.lastName)
+                birthDateView.setValueOrMakeGone(profileData.birthDate?.toString())
+                cityView.setValueOrMakeGone(profileData.city)
+                genderView.setValueOrMakeGone(profileData.gender)
+                emailView.setValueOrMakeGone(profileData.email)
+                phoneNumberView.setValueOrMakeGone(profileData.phoneNumber)
+                booksView.setValueOrMakeGone(profileData.booksCount)
 
-                    noDataView.isGone = true
-                    contentView.isVisible = true
-                }
-                is ContentEvent.Error -> {
-                    val throwable = event.throwable
-                    Toast.makeText(requireContext(), throwable.message, Toast.LENGTH_SHORT).show()
-                }
+                noDataView.isGone = true
+                contentView.isVisible = true
             }
         })
+        viewModel.error.observe(viewLifecycleOwner, Observer { throwable ->
+            Toast.makeText(requireContext(), throwable.message, Toast.LENGTH_SHORT).show()
+        })
     }
+
 
 }
