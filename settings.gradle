@@ -4,7 +4,9 @@ gradle.ext.roboswag = [
         'utils',
         'logging',
         'lifecycle',
-        'lifecycle-rx'
+        'lifecycle-rx',
+        'kotlin-extensions',
+        'recyclerview-adapters'
 ]
 
 gradle.ext.roboswag.forEach { module ->
