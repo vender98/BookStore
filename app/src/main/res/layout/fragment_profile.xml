@@ -120,8 +120,8 @@
                 tools:visibility="gone">
 
                 <ImageView
-                    android:layout_width="96dp"
-                    android:layout_height="96dp"
+                    android:layout_width="@dimen/icon_no_data_size"
+                    android:layout_height="@dimen/icon_no_data_size"
                     android:layout_gravity="center"
                     android:layout_marginTop="96dp"
                     android:src="@drawable/ic_no_data"

@@ -3,6 +3,8 @@ package com.vender98.bookstore.ui.books
 import android.content.Context
 import android.os.Bundle
 import android.view.View
+import androidx.core.view.isGone
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -24,6 +26,9 @@ class BooksFragment : Fragment(R.layout.fragment_books) {
     private val viewModel by viewModels<BooksViewModel> { viewModelFactory }
 
     lateinit var recyclerView: RecyclerView
+    lateinit var noDataView: View
+    lateinit var progressBarView: View
+
     private val recyclerAdapter = BookAdapter()
 
     override fun onAttach(context: Context) {
@@ -42,6 +47,8 @@ class BooksFragment : Fragment(R.layout.fragment_books) {
 
     private fun bindViews(rootView: View) {
         recyclerView = rootView.findViewById(R.id.fragment_books_recycler)
+        noDataView = rootView.findViewById(R.id.fragment_books_no_data)
+        progressBarView = rootView.findViewById(R.id.fragment_books_progress_bar)
     }
 
     private fun configureViews() {
@@ -51,12 +58,15 @@ class BooksFragment : Fragment(R.layout.fragment_books) {
 
     private fun observeViewModel() {
         viewModel.books.observe(viewLifecycleOwner, Observer { event ->
-            when (event) {
-                is ContentEvent.Loading -> {
-                    // TODO: implement this
-                }
-                is ContentEvent.Success -> {
-                    recyclerAdapter.submitList(event.data)
+            if (event is ContentEvent.Success) {
+                val books = event.data
+                recyclerAdapter.submitList(books)
+
+                progressBarView.isGone = true
+                if (books.isNotEmpty()) {
+                    recyclerView.isVisible = true
+                } else {
+                    noDataView.isVisible = true
                 }
             }
         })
