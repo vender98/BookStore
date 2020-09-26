@@ -9,6 +9,7 @@ import com.vender98.bookstore.dto.profile.Profile
 import io.reactivex.Single
 import io.reactivex.functions.BiFunction
 import ru.touchin.lifecycle.event.ContentEvent
+import ru.touchin.lifecycle.livedata.EmptySingleLiveEvent
 import ru.touchin.lifecycle.livedata.SingleLiveEvent
 import ru.touchin.lifecycle.viewmodel.RxViewModel
 import java.time.format.DateTimeFormatter
@@ -28,6 +29,9 @@ class ProfileViewModel @Inject constructor(
 
     private val _error = SingleLiveEvent<Throwable>()
     val error: LiveData<Throwable> = _error
+
+    private val _navigateToBooksScreenAction = EmptySingleLiveEvent()
+    val navigateToBooksScreenAction: LiveData<Void?> = _navigateToBooksScreenAction
 
     init {
         fetchData(forceRefresh = false)
@@ -52,6 +56,10 @@ class ProfileViewModel @Inject constructor(
                         }
                     }
             )
+    }
+
+    fun navigateToBooksScreen() {
+        _navigateToBooksScreenAction.call()
     }
 
     private fun getProfileData(profile: Profile, books: List<Book>): ProfileData = ProfileData(

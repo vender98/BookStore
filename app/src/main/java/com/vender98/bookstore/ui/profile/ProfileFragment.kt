@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.vender98.bookstore.BookStoreApplication
 import com.vender98.bookstore.R
+import com.vender98.bookstore.ui.books.BooksFragment
 import com.vender98.bookstore.views.NameValueView
 import ru.touchin.lifecycle.event.ContentEvent
 import javax.inject.Inject
@@ -67,9 +68,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
     private fun configureViews() {
         swipeRefreshLayout.setOnRefreshListener { viewModel.fetchData() }
-        booksView.setOnClickListener {
-            // TODO: implement this
-        }
+        booksView.setOnClickListener { viewModel.navigateToBooksScreen() }
     }
 
     private fun observeViewModel() {
@@ -95,7 +94,15 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         viewModel.error.observe(viewLifecycleOwner, Observer { throwable ->
             Toast.makeText(requireContext(), throwable.message, Toast.LENGTH_SHORT).show()
         })
+        viewModel.navigateToBooksScreenAction.observe(viewLifecycleOwner, Observer { navigateToBooksScreen() })
     }
 
+    private fun navigateToBooksScreen() {
+        requireActivity().supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.fragment_container, BooksFragment.newInstance())
+                .addToBackStack(null)
+                .commit()
+    }
 
 }
