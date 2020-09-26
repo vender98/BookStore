@@ -8,7 +8,5 @@ data class Book(
     @Expose
     val name: String,
     @Expose
-    val authors: List<Long>,
-    @Expose
     val imageUrl: String?
 )

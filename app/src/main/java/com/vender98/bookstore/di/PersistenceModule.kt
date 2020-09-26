@@ -3,6 +3,7 @@ package com.vender98.bookstore.di
 import android.content.Context
 import androidx.room.Room
 import com.vender98.bookstore.data.persistence.Database
+import com.vender98.bookstore.data.persistence.dao.BooksDao
 import com.vender98.bookstore.data.persistence.dao.ProfileDao
 import dagger.Module
 import dagger.Provides
@@ -19,5 +20,9 @@ class PersistenceModule {
     @Provides
     @Singleton
     fun provideProfileDao(database: Database): ProfileDao = database.profileDao
+
+    @Provides
+    @Singleton
+    fun provideBooksDao(database: Database): BooksDao = database.booksDao
 
 }

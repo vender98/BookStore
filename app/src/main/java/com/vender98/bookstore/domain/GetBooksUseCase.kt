@@ -9,6 +9,10 @@ class GetBooksUseCase @Inject constructor(
     private val booksRepository: BooksRepository
 ) {
 
-    operator fun invoke(): Single<List<Book>> = booksRepository.getBooks()
+    operator fun invoke(forceRefresh: Boolean): Single<List<Book>> = if(forceRefresh) {
+        booksRepository.getBooksFromNetwork()
+    } else {
+        booksRepository.getBooks()
+    }
 
 }

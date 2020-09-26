@@ -27,7 +27,7 @@ class ProfileViewModel @Inject constructor(
     fun fetchData(forceRefresh: Boolean = true) {
         Single.zip(
             getProfileUseCase.invoke(forceRefresh),
-            getBooksUseCase.invoke(),
+            getBooksUseCase.invoke(forceRefresh),
             BiFunction(this::getProfileData)
         )
             .dispatchTo(_viewState)
