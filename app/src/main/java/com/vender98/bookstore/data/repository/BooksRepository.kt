@@ -32,6 +32,14 @@ class BooksRepository @Inject constructor(
             .map { bookEntities ->
                 bookEntities.map { it.toBook() }
             }
+            .flatMapMaybe { books ->
+                if (books.isNotEmpty()) {
+                    Maybe.just(books)
+                } else {
+                    Maybe.empty()
+                }
+            }
+
 
     private fun Single<List<Book>>.updateBooksCache(): Single<List<Book>> = this
             .flatMap { books ->

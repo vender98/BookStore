@@ -6,13 +6,13 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Transaction
 import com.vender98.bookstore.data.persistence.entities.BookEntity
-import io.reactivex.Maybe
+import io.reactivex.Single
 
 @Dao
 interface BooksDao {
 
     @Query("SELECT * FROM book")
-    fun get(): Maybe<List<BookEntity>>
+    fun get(): Single<List<BookEntity>>
 
     @Transaction
     fun set(books: List<BookEntity>) {
