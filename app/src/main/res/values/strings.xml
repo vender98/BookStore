@@ -1,4 +1,13 @@
 <resources>
     <string name="app_name">BookStore</string>
     <string name="date_template">%sг.</string>
+
+    <string name="first_name">Имя</string>
+    <string name="last_name">Фамилия</string>
+    <string name="birth_date">Дата рождения</string>
+    <string name="city">Город проживания</string>
+    <string name="gender">Пол</string>
+    <string name="email">e-mail</string>
+    <string name="phone_number">Номер телефона</string>
+    <string name="books">Количество прочитанных книнг</string>
 </resources>

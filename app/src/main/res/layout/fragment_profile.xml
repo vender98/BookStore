@@ -30,7 +30,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:name="Имя"
+                    app:name="@string/first_name"
                     tools:value="Александр" />
 
                 <com.vender98.bookstore.views.NameValueView
@@ -41,7 +41,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/fragment_profile_first_name"
-                    app:name="Фамилия"
+                    app:name="@string/last_name"
                     tools:value="Александров" />
 
                 <com.vender98.bookstore.views.NameValueView
@@ -52,7 +52,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/fragment_profile_last_name"
-                    app:name="Дата рождения"
+                    app:name="@string/birth_date"
                     tools:value="1 января 2020г." />
 
                 <com.vender98.bookstore.views.NameValueView
@@ -63,7 +63,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/fragment_profile_birth_date"
-                    app:name="Город проживания"
+                    app:name="@string/city"
                     tools:value="Санкт-Петербург" />
 
                 <com.vender98.bookstore.views.NameValueView
@@ -74,7 +74,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/fragment_profile_city"
-                    app:name="Пол"
+                    app:name="@string/gender"
                     tools:value="Мужской" />
 
                 <com.vender98.bookstore.views.NameValueView
@@ -85,7 +85,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/fragment_profile_gender"
-                    app:name="e-mail"
+                    app:name="@string/email"
                     tools:value="someaddress@domen.com" />
 
                 <com.vender98.bookstore.views.NameValueView
@@ -96,7 +96,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/fragment_profile_email"
-                    app:name="Номер телефона"
+                    app:name="@string/phone_number"
                     tools:value="+7 (912) 345-67-89" />
 
                 <com.vender98.bookstore.views.NameValueView
@@ -110,7 +110,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/fragment_profile_phone_number"
                     app:layout_constraintVertical_bias="0.0"
-                    app:name="Количество прочитанных книнг"
+                    app:name="@string/books"
                     tools:value="777" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
