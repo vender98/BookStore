@@ -115,27 +115,19 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <ImageView
                 android:id="@+id/fragment_profile_no_data"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="@dimen/icon_no_data_size"
+                android:layout_height="@dimen/icon_no_data_size"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_no_data"
                 android:visibility="visible"
-                tools:visibility="gone">
-
-                <ImageView
-                    android:layout_width="@dimen/icon_no_data_size"
-                    android:layout_height="@dimen/icon_no_data_size"
-                    android:layout_gravity="center"
-                    android:src="@drawable/ic_no_data"
-                    android:visibility="visible"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:ignore="ContentDescription"
-                    tools:visibility="visible" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ContentDescription"
+                tools:visibility="gone" />
 
         </FrameLayout>
 
