@@ -9,22 +9,18 @@ import ru.touchin.lifecycle.viewmodel.RxViewModel
 import javax.inject.Inject
 
 class BooksViewModel @Inject constructor(
-    private val getBooksUseCase: GetBooksUseCase
+    getBooksUseCase: GetBooksUseCase
 ) : RxViewModel() {
 
     private val _books = MutableLiveData<ContentEvent<List<BookItem>>>()
     val books: LiveData<ContentEvent<List<BookItem>>> = _books
 
     init {
-        fetchData()
-    }
-
-    private fun fetchData() {
-        getBooksUseCase.invoke(forceRefresh = false)
-            .map { books ->
-                books.map { it.toBookItem() }
-            }
-            .dispatchTo(_books)
+        getBooksUseCase.invoke()
+                .map { books ->
+                    books.map { it.toBookItem() }
+                }
+                .dispatchTo(_books)
     }
 
     private fun Book.toBookItem() = BookItem(

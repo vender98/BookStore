@@ -18,23 +18,19 @@ class ProfileRepository @Inject constructor(
         private val profileDao: ProfileDao
 ) {
 
-    fun getProfile(): Single<Profile> = getProfileFromCache()
-            .switchIfEmpty(getProfileFromNetwork())
-
-    fun getProfileFromNetwork(): Single<Profile> = api.getProfile()
-            .map { it.unpack() }
-            .updateProfileCache()
-
-    private fun getProfileFromCache(): Maybe<Profile> = profileDao.get()
+    fun getProfile(): Maybe<Profile> = profileDao.get()
             .subscribeOn(Schedulers.io())
             .map { it.toProfile() }
 
-    private fun Single<Profile>.updateProfileCache(): Single<Profile> = this
-            .flatMap { profile ->
+    fun fetchProfile(): Completable = api.getProfile()
+            .map { it.unpack() }
+            .updateCache()
+
+    private fun Single<Profile>.updateCache(): Completable = this
+            .flatMapCompletable { profile ->
                 Completable.fromAction {
                     profileDao.set(profile.toProfileEntity())
                 }
-                        .andThen(Single.just(profile))
             }
 
     private fun ProfileEntity.toProfile() = Profile(

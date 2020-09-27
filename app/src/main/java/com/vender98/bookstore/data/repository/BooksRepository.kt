@@ -7,7 +7,6 @@ import com.vender98.bookstore.dto.books.Book
 import com.vender98.bookstore.dto.books.BooksWrapper
 import com.vender98.bookstore.extensions.unpack
 import io.reactivex.Completable
-import io.reactivex.Maybe
 import io.reactivex.Single
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
@@ -19,34 +18,22 @@ class BooksRepository @Inject constructor(
         private val booksDao: BooksDao
 ) {
 
-    fun getBooks(): Single<List<Book>> = getBooksFromCache()
-            .switchIfEmpty(getBooksFromNetwork())
-
-    fun getBooksFromNetwork(): Single<List<Book>> = api.getBooks()
-            .map { it.unpack() }
-            .map(BooksWrapper::books)
-            .updateBooksCache()
-
-    private fun getBooksFromCache(): Maybe<List<Book>> = booksDao.get()
+    fun getBooks(): Single<List<Book>> = booksDao.get()
             .subscribeOn(Schedulers.io())
             .map { bookEntities ->
                 bookEntities.map { it.toBook() }
             }
-            .flatMapMaybe { books ->
-                if (books.isNotEmpty()) {
-                    Maybe.just(books)
-                } else {
-                    Maybe.empty()
-                }
-            }
 
+    fun fetchBooks(): Completable = api.getBooks()
+            .map { it.unpack() }
+            .map(BooksWrapper::books)
+            .updateCache()
 
-    private fun Single<List<Book>>.updateBooksCache(): Single<List<Book>> = this
-            .flatMap { books ->
+    private fun Single<List<Book>>.updateCache(): Completable = this
+            .flatMapCompletable { books ->
                 Completable.fromAction {
                     booksDao.set(books.map { it.toBookEntity() })
                 }
-                        .andThen(Single.just(books))
             }
 
     private fun BookEntity.toBook() = Book(
