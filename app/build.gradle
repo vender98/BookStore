@@ -15,6 +15,14 @@ android {
         versionName "1.0"
 
         buildConfigField "String", "API_ENDPOINT", '"https://firebasestorage.googleapis.com/v0/b/test-f4f35.appspot.com/o/"'
+
+        // =================================TOKENS=====================================
+        // "ziPZ63IYeuRiHz2ytNlzDw0h98Ve6A7I" – full profile data and full books data
+        // "hldktIc3tiGx3Tu6UlhpXNH993u8vifT" – profile with clipped data and one book data
+        // "RDhi7k79GSmdZcW4Gg7X0sUNUbYQZsxF" – full profile data and empty books data
+        // "xfTV94kfsVFyxPfvTg55aDx_jxvrNUBg" – "token expired" error
+        // "LbwCgZvvlFO2ydRK5BAfau2elUYnauNT" – "internal backend" error
+        // =============================================================================
         buildConfigField "String", "API_TOKEN", "\"ziPZ63IYeuRiHz2ytNlzDw0h98Ve6A7I\""
     }
 
