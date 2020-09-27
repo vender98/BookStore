@@ -4,8 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:paddingEnd="@dimen/margin_default"
-    tools:paddingStart="@dimen/margin_default"
     tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout">
 
     <TextView
@@ -15,6 +13,7 @@
         android:layout_marginEnd="@dimen/margin_default"
         android:paddingTop="@dimen/margin_default"
         android:paddingBottom="@dimen/margin_default"
+        android:textColor="@android:color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/view_view_name_value_guideline"
         app:layout_constraintHorizontal_chainStyle="spread_inside"
@@ -34,6 +33,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_default"
+        android:gravity="end"
         android:paddingTop="@dimen/margin_default"
         android:paddingBottom="@dimen/margin_default"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -46,9 +46,7 @@
         android:id="@+id/view_name_value_divider"
         android:layout_width="0dp"
         android:layout_height="1dp"
-        android:layout_marginStart="@dimen/margin_default"
-        android:layout_marginEnd="@dimen/margin_default"
-        android:background="@color/colorPrimary"
+        android:background="@color/light_gray"
         app:layout_constraintBottom_toBottomOf="parent" />
 
 </merge>
