@@ -48,7 +48,7 @@ class ProfileViewModel @Inject constructor(
         val oldData = _profileData.value?.data
         fetchDataUseCase.invoke()
                 .andThen(getData())
-                .doOnSubscribe { _profileData.value = ContentEvent.Loading() }
+                .doOnSubscribe { _profileData.value = ContentEvent.Loading(oldData) }
                 .untilDestroy(
                         onSuccess = { _profileData.value = ContentEvent.Success(it) },
                         onError = { throwable ->

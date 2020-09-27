@@ -75,8 +75,9 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     private fun observeViewModel() {
         viewModel.profileData.observe(viewLifecycleOwner, Observer { event ->
             swipeRefreshLayout.isRefreshing = event is ContentEvent.Loading
-            if (event is ContentEvent.Success) {
-                val profileData = event.data
+
+            val profileData = event.data
+            if (profileData != null) {
                 firstNameView.setValueOrMakeGone(profileData.firstName)
                 lastNameView.setValueOrMakeGone(profileData.lastName)
                 birthDateView.setValueOrMakeGone(profileData.birthDate?.let { birthDate ->
