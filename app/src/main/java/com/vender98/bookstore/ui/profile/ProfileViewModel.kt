@@ -40,7 +40,7 @@ class ProfileViewModel @Inject constructor(
     init {
         fetchDataIfNotCachedUseCase.invoke()
                 .andThen(getData())
-                .doOnError(_error::setValue)
+                .doOnError(_error::postValue)
                 .dispatchTo(_profileData)
     }
 
