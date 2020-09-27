@@ -25,21 +25,19 @@ class BooksFragment : Fragment(R.layout.fragment_books) {
     lateinit var viewModelFactory: ViewModelProvider.Factory
     private val viewModel by viewModels<BooksViewModel> { viewModelFactory }
 
-    lateinit var recyclerView: RecyclerView
-    lateinit var noDataView: View
-    lateinit var progressBarView: View
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var noDataView: View
+    private lateinit var progressBarView: View
 
     private val recyclerAdapter = BookAdapter()
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-
         (requireActivity().application as BookStoreApplication).appComponent.inject(this)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         bindViews(view)
         configureViews()
         observeViewModel()

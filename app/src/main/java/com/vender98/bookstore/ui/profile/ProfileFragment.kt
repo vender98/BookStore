@@ -29,17 +29,17 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     lateinit var viewModelFactory: ViewModelProvider.Factory
     private val viewModel by viewModels<ProfileViewModel> { viewModelFactory }
 
-    lateinit var swipeRefreshLayout: SwipeRefreshLayout
-    lateinit var contentView: View
-    lateinit var noDataView: View
-    lateinit var firstNameView: NameValueView
-    lateinit var lastNameView: NameValueView
-    lateinit var birthDateView: NameValueView
-    lateinit var cityView: NameValueView
-    lateinit var genderView: NameValueView
-    lateinit var emailView: NameValueView
-    lateinit var phoneNumberView: NameValueView
-    lateinit var booksView: NameValueView
+    private lateinit var swipeRefreshLayout: SwipeRefreshLayout
+    private lateinit var contentView: View
+    private lateinit var noDataView: View
+    private lateinit var firstNameView: NameValueView
+    private lateinit var lastNameView: NameValueView
+    private lateinit var birthDateView: NameValueView
+    private lateinit var cityView: NameValueView
+    private lateinit var genderView: NameValueView
+    private lateinit var emailView: NameValueView
+    private lateinit var phoneNumberView: NameValueView
+    private lateinit var booksView: NameValueView
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
