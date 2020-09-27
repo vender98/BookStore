@@ -10,36 +10,25 @@
         android:id="@+id/view_name_value_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/margin_default"
-        android:paddingTop="@dimen/margin_default"
-        android:paddingBottom="@dimen/margin_default"
-        android:textColor="@android:color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/view_view_name_value_guideline"
+        android:textColor="@android:color/darker_gray"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_chainStyle="spread_inside"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="It is a very long name field. So long that it does not fit one line ..." />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/view_view_name_value_guideline"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent=".4" />
+        tools:text="It is a very long name field. So long that it does not fit one line and so on ..." />
 
     <TextView
         android:id="@+id/view_name_value_value"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_default"
-        android:gravity="end"
-        android:paddingTop="@dimen/margin_default"
-        android:paddingBottom="@dimen/margin_default"
+        android:paddingBottom="@dimen/margin_small"
+        android:textColor="@android:color/black"
+        android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/view_view_name_value_guideline"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view_name_value_name"
         tools:text="It is a very long name field. So long that it does not fit one line ..." />
 
     <View
