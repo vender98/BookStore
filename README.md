@@ -1,10 +1,10 @@
 # BookStore
 
-**BookStore** – Android application which represents a part of application for storing and reading books. It consists of two screens – "Profile" screen with user data and "Books" screen with book cards.
+**BookStore** – Android application that represents a part of application for storing and reading books. It consists of two screens – "Profile" screen with user data and "Books" screen with book cards.
 
-It allows:
-* to obtain and show profile and books data using REST API
-* to cache profile and books data in local database
+Possibilities:
+* Retrieving and showing profile and books data using REST API
+* Caching profile and books data in local database
 
 ### Screenshots
 
